@@ -1,11 +1,14 @@
 from flask import Flask, request, jsonify # type: ignore
 import google.generativeai as genai
+import os
+from dotenv import load_dotenv
 
-
+load_dotenv()
+API_KEY= os.getenv("GEMINI_API_KEY")
 
 app = Flask(__name__)
 
-genai.configure(api_key="AIzaSyDsdbs_h7EmkCaKqf0Tr5ocdpUPDtWY-Xs")
+genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 
